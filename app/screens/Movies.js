@@ -1,7 +1,13 @@
 import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 const Movies = () => {
+  const { text } = useTypewriter({
+    words: ["Selamat Datang di Movie App"],
+    loop: { 3: true },
+    onLoopDone: () => console.log(`loop completed after 3 runs.`),
+  });
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -17,11 +23,19 @@ const Movies = () => {
             style={{
               height: "70%",
               width: "80%",
-              marginRight: "8%",
               resizeMode: "contain",
               alignItems: "center",
+              // borderWidth: 1,
+              borderColor: "white",
             }}
           />
+        </View>
+        <View
+          style={{
+            flex: 1,
+          }}
+        >
+          <Text style={styles.Intro}>{text}</Text>
         </View>
       </ImageBackground>
     </View>
@@ -44,6 +58,16 @@ const styles = StyleSheet.create({
     height: "10%",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "black",
+  },
+  Intro: {
+    fontSize: 30,
+    color: "white",
+    fontWeight: "bold",
+    justifyContent: "center",
+    textAlign: "center",
+    fontFamily: "Roboto",
+    paddingTop: "15%",
   },
 });
 

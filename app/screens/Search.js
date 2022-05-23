@@ -65,7 +65,7 @@ const Search = ({ navigation }) => {
           style={{
             height: "70%",
             width: "80%",
-            marginRight: "8%",
+            // marginRight: "8%",
             resizeMode: "contain",
             alignItems: "center",
           }}
@@ -81,7 +81,7 @@ const Search = ({ navigation }) => {
             flexDirection: "row",
             // justifyContent: "center",
             paddingHorizontal: 10,
-            backgroundColor: "gray",
+            backgroundColor: "white",
             borderRadius: 20,
             paddingVertical: 5,
             justifyContent: "space-between",
@@ -97,7 +97,7 @@ const Search = ({ navigation }) => {
             style={styles.MiniBoxSearch}
             onPress={() => ambilData()}
           >
-            <FontAwesome5 name="search" size={10} />
+            <FontAwesome5 name="search" size={20} />
           </TouchableOpacity>
         </View>
       </View>
@@ -194,9 +194,11 @@ const styles = StyleSheet.create({
   },
 
   FormSearch: {
-    backgroundColor: "gray",
+    backgroundColor: "white",
     width: "70%",
     justifyContent: "flex-start",
+    fontSize: 15,
+    marginLeft: "5%",
   },
 
   MiniBoxSearch: {
@@ -216,7 +218,7 @@ const styles = StyleSheet.create({
 
   Header: {
     height: "10%",
-    backgroundColor: "#161616",
+    backgroundColor: "black",
     justifyContent: "center",
     alignItems: "center",
   },
