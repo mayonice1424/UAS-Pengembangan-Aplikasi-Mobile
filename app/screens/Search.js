@@ -11,9 +11,14 @@ import {
 import { TextInput } from "react-native-gesture-handler";
 import { StatusBar } from 'expo-status-bar';
 
+function simpanData () {
+  const IDBaru = item.imdbID
+}
+
 const Search = ({navigation}) => {
   const [search, onChangeSearch] = React.useState('');
   const [data, setData] = useState()
+  // const [ID, setID] = useState('')
   // const [dataAwal, setDataAwal] = useState()
 
   // useEffect( () => {
@@ -24,6 +29,9 @@ const Search = ({navigation}) => {
 
 
   const ambilData = async() => {
+    if (search === '') {
+      alert('Masukan kata yang ingin dicari!')
+    } else {
       try {
           const res= await axios.get('http://www.omdbapi.com', {
               params: {
@@ -36,21 +44,17 @@ const Search = ({navigation}) => {
       } catch (error) {   
           alert(error.message)
       }
+    }
   }
 
-  // const ambilDetail = async() => {
-  //     try {
-  //         const res= await axios.get('http://www.omdbapi.com', {
-  //             params: {
-  //                 t: search,
-  //                 apikey: '94a3c0c',
-  //             }
-  //         })
-  //         setData(res.data.Search)
-  //         console.log(res);
-  //     } catch (error) {   
-  //         alert(error.message)
-  //     }
+  const kirimID = async() => {
+    navigation.navigate('Konfirmasi',{
+      ID : IDBaru
+  })
+  }
+
+  // const simpanID = async() => {
+  //   const IDBaru = item.imdbID
   // }
 
   return (
@@ -102,7 +106,8 @@ const Search = ({navigation}) => {
                           marginTop: 10,
                           borderRadius: 10,
                           backgroundColor: '#0080ff',
-                          paddingHorizontal: 10,}}>
+                          paddingHorizontal: 10,}}
+                          onPress={() => kirimID()}>
                               <Text style={{fontWeight: 'bold',
                               fontSize: 17}}>{item.Title}</Text>
                               <View style={{
@@ -113,11 +118,10 @@ const Search = ({navigation}) => {
                               }}>
                                   <Text style={{fontWeight: '500',
                                   fontSize: 12, justifyContent: 'flex-start'}}>{item.Year}</Text>
-                                  {/* <Text style={{fontWeight: '500',
-                                  fontSize: 12}}>{item.Poster}</Text> */}
                                   <Image source={{uri: item.Poster}}
                                   style={{width: 100, height: 100, justifyContent: 'flex-end', resizeMode: 'contain'}} />
                               </View>
+                              {/* <simpanID /> */}
                           </TouchableOpacity>
                   </>
               })}
