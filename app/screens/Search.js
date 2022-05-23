@@ -107,16 +107,35 @@ const Search = ({ navigation }) => {
           data.map((item, i) => {
             return (
               <>
-                <TouchableOpacity style={styles.BoxList}>
-                  <Text style={styles.MovieTitle}>{item.Title}</Text>
-                  <View style={styles.PosterPosition}>
-                    <Text style={styles.MovieYear}>{item.Year}</Text>
-                    <Image
-                      source={{ uri: item.Poster }}
-                      style={styles.MoviePoster}
-                    />
-                  </View>
-                </TouchableOpacity>
+                <View style={styles.BoxList}>
+                  <TouchableOpacity
+                    style={{
+                      borderWidth: 1,
+                      borderColor: "white",
+                      marginTop: "5%",
+                      borderRadius: 10,
+                    }}
+                  >
+                    <View style={styles.PosterPosition}>
+                      <Image
+                        source={{ uri: item.Poster }}
+                        style={styles.MoviePoster}
+                      />
+                      <Text
+                        style={{
+                          paddingBottom: "7%",
+                          fontSize: 20,
+                          color: "white",
+                          marginTop: -50,
+                          fontWeight: "bold",
+                          fontFamily: "Roboto",
+                        }}
+                      >
+                        {item.Title}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
               </>
             );
           })}
@@ -128,11 +147,14 @@ const Search = ({ navigation }) => {
 const styles = StyleSheet.create({
   BoxList: {
     marginHorizontal: "10%",
-    borderWidth: 1,
-    marginTop: 10,
+    // borderWidth: 1,
+    // borderColor: "white",
+    // marginTop: 10,
     borderRadius: 10,
     backgroundColor: "black",
-    paddingHorizontal: 10,
+    // paddingHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   MovieTitle: {
@@ -147,22 +169,25 @@ const styles = StyleSheet.create({
   },
 
   MoviePoster: {
-    width: 100,
-    height: 100,
-    justifyContent: "flex-end",
+    width: 300,
+    height: 600,
+    justifyContent: "center",
+    alignItems: "center",
     resizeMode: "contain",
+    marginTop: "-10%",
   },
 
   PosterPosition: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 10,
+    paddingHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   BoxSearch: {
     paddingHorizontal: "20%",
     paddingBottom: 2,
-    paddingTop: 2,
+    paddingTop: 20,
+    paddingBottom: 20,
     backgroundColor: "black",
     justifyContent: "center",
     flexDirection: "row",
@@ -190,8 +215,8 @@ const styles = StyleSheet.create({
   },
 
   Header: {
-    height: "15%",
-    backgroundColor: "gray",
+    height: "10%",
+    backgroundColor: "#161616",
     justifyContent: "center",
     alignItems: "center",
   },
